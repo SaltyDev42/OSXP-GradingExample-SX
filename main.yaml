@@ -5,8 +5,13 @@
 
   tasks:
   - name: "Check if file exists"
-    stat: "/home/{{ login }}/.bashrc"
+    stat:
+      path: "/home/{{ login }}/.bashrc"
     register: r
+
+  - name: "Available variable"
+    debug:
+      msg: "login = {{ login }} || domain = {{ domain }} || user = {{ user }}"
 
   - name: "Result"
     debug:
