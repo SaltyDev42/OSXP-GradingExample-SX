@@ -1,0 +1,14 @@
+---
+- name: "Grading Example Playbook"
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: "Check if file exists"
+    stat: "/home/{{ login }}/.bashrc"
+    register: r
+
+  - name: "Result"
+    debug:
+      msg: "you have earned 100 point out of 0"
+    when: r.stat.exists
